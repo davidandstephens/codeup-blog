@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head" />
+<body class="main">
+<nav th:replace="partials :: navbar" />
+<div>
+    <h3>Here's The deal...</h3>
+    <p>You guessed <span th:text="${number}"></span></p>
+    <p>You rolled <span th:text="${magicNumber}"></span></p>
+    <p th:if="${checker}">You guessed right!</p>
+    <p th:if="${!checker}">You guessed wrong...</p>
+</div>
+<footer th:replace="partials :: footer" />
+<script th:replace="partials :: m-script" />
+<script th:replace="partials :: j-query" />
+</body>
+</html>

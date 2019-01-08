@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head" />
+<body class="main">
+<nav th:replace="partials :: navbar" />
+<div class="container">
+    <div class="row">
+        <div th:each="post : ${posts}">
+            <div class="col s6">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title" th:text="${post.title}" />
+                        <p th:text="${post.body}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="partials :: footer" />
+<script th:replace="partials :: m-script" />
+<script th:replace="partials :: j-query" />
+</body>
+</html>

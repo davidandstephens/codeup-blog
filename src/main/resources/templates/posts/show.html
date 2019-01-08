@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head" />
+<body class="main">
+<nav th:replace="partials :: navbar" />
+<div class="container">
+    <h3 th:text="${title}" />
+    <p th:text="${body}" />
+</div>
+<footer th:replace="partials :: footer" />
+<script th:replace="partials :: m-script" />
+<script th:replace="partials :: j-query" />
+</body>
+</html>

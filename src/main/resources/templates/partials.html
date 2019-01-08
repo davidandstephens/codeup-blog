@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/css/master.css" th:href="@{/css/master.css}" type="text/css" />
+    <title>Title</title>
+</head>
+<body class="main">
+    <nav th:fragment="navbar" class="indigo darken-1">
+        <div class="nav-wrapper container">
+            <div class="col offset-1 s10">
+                <a href="#" class="brand-logo indigo-text text-lighten-4">Cool and Good Blog</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="/posts/1" class="indigo-text text-lighten-4">Most Recent Post</a></li>
+                    <li><a href="/posts" class="indigo-text text-lighten-4">All Posts</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <footer th:fragment="footer" class="page-footer indigo darken-1">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="indigo-text text-lighten-5">One sec...</h5>
+                    <p class="indigo-text text-lighten-4">Reminder: people like to read something meaningful...</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="indigo-text text-lighten-5">Links</h5>
+                    <ul>
+                        <li><a class="indigo-text text-lighten-4" href="/posts">All Posts</a></li>
+                        <li><a class="indigo-text text-lighten-4" href="/roll-dice">Dice Roll Guesser</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script th:fragment="m-script" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script th:fragment="jquery" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+</html>
