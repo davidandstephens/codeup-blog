@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head">
+<head>
+<th:block th:fragment="head">
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet" />
     <link rel="stylesheet" href="../static/css/master.css" th:href="@{/css/master.css}" type="text/css" />
-    <title>Title</title>
+</th:block>
 </head>
 <body class="main">
     <nav th:fragment="navbar" class="indigo darken-1">
