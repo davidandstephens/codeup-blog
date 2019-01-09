@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <div th:replace="partials :: head" />
-    <title>Viewing All Posts</title>
-</head>
+<head th:replace="partials :: head ('Viewing All Posts')" />
 <body class="main">
 <nav th:replace="partials :: navbar" />
 <div class="container">

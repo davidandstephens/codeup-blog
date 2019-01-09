@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<th:block th:fragment="head">
+<head th:fragment="head (title)">
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet" />
     <link rel="stylesheet" href="../static/css/master.css" th:href="@{/css/master.css}" type="text/css" />
-</th:block>
+    <title th:text="${title}"></title>
 </head>
+
 <body class="main">
     <nav th:fragment="navbar" class="indigo darken-1">
         <div class="nav-wrapper container">

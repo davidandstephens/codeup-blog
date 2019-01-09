@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <div th:replace="partials :: head" />
-    <title>Make A Guess</title>
-</head>
+<head th:replace="partials :: head ('Make A Guess')" />
 <body class="main">
     <nav th:replace="partials :: navbar" />
     <div>
