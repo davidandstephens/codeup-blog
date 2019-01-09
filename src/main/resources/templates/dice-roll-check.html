@@ -4,11 +4,18 @@
 <body class="main">
 <nav th:replace="partials :: navbar" />
 <div class="container">
-    <h3>Here's The deal...</h3>
-    <p>You guessed <span th:text="${number}"></span></p>
-    <p>You rolled <span th:text="${magicNumber}"></span></p>
-    <p th:if="${checker}">You guessed right!</p>
-    <p th:if="${!checker}">You guessed wrong...</p>
+    <div class="card offwhite-body">
+        <div class="card-image">
+            <img src="../static/img/big-bar.png" th:src="@{/img/big-bar.png}" alt="colorful bar" />
+        </div>
+        <div class="card-content">
+            <h3 class="card-title">Here's the deal...</h3>
+            <p>You guessed <span th:text="${number}"></span></p>
+            <p>You rolled <span th:text="${magicNumber}"></span></p>
+            <p th:if="${checker}">You guessed right!</p>
+            <p th:if="${!checker}">You guessed wrong...</p>
+        </div>
+    </div>
 </div>
 <footer th:replace="partials :: footer" />
 <script th:replace="partials :: m-script" />
