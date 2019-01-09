@@ -1,5 +1,22 @@
 .main {
-    background: #fff8e1;
+    background: #7986cb;
     color: #1a237e;
     font-family: 'Dosis', sans-serif;
+}
+
+.offwhite-body {
+    background: #EEF4ED;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+    color: #1a237e;
+}
+
+.offwhite-text {
+    color: #EEF4ED;
+}
+.darker-offwhite-text {
+    color: #BFC4BE;
 }

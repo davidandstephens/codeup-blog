@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet" />
-    <link rel="stylesheet" href="../static/css/master.css" th:href="@{/css/master.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/master.css}" type="text/css" />
     <title th:text="${title}"></title>
 </head>
 
@@ -12,10 +12,10 @@
     <nav th:fragment="navbar" class="indigo darken-1">
         <div class="nav-wrapper">
             <div class="container">
-                <a href="#" class="brand-logo indigo-text text-lighten-4">Cool and Good Blog</a>
+                <a href="#" class="brand-logo offwhite-text">Cool and Good Blog</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="/posts/1" class="indigo-text text-lighten-4">Most Recent Post</a></li>
-                    <li><a href="/posts" class="indigo-text text-lighten-4">All Posts</a></li>
+                    <li><a href="/posts/most-recent" class="offwhite-text">Most Recent Post</a></li>
+                    <li><a href="/posts" class="offwhite-text">All Posts</a></li>
                 </ul>
             </div>
         </div>
@@ -25,16 +25,20 @@
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <h5 class="indigo-text text-lighten-5">One sec...</h5>
-                    <p class="indigo-text text-lighten-4">Reminder: people like to read something meaningful...</p>
+                    <h5 class="darker-offwhite-text">One sec...</h5>
+                    <p class="offwhite-text">Reminder: people like to read something meaningful...</p>
                 </div>
                 <div class="col l4 offset-l2 s12">
-                    <h5 class="indigo-text text-lighten-5">Links</h5>
+                    <h5 class="darker-offwhite-text">Links</h5>
                     <ul>
-                        <li><a class="indigo-text text-lighten-4" href="/posts">All Posts</a></li>
-                        <li><a class="indigo-text text-lighten-4" href="/roll-dice">Dice Roll Guesser</a></li>
+                        <li><a class="offwhite-text" href="/posts">All Posts</a></li>
+                        <li><a class="offwhite-text" href="/roll-dice">Dice Roll Guesser</a></li>
                     </ul>
                 </div>
+            </div>
+        </div>
+        <div class="footer-copyright indigo accent-3">
+            <div class="container indigo-text text-lighten-4">
             </div>
         </div>
     </footer>

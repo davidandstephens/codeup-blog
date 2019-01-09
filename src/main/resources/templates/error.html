@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head ('Error')" />
+<body class="main">
+<nav th:replace="partials :: navbar" />
+<div class="container">
+        <div class="card offwhite-body">
+            <div class="card-image">
+                <img src="../static/img/big-bar.png" th:src="@{/img/big-bar.png}" alt="colorful bar" />
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Opps!</h3>
+                <p>Looks like you made an oppsie-whoopsy!</p>
+            </div>
+        </div>
+</div>
+<footer th:replace="partials :: footer" />
+<script th:replace="partials :: m-script" />
+<script th:replace="partials :: j-query" />
+</body>
+</html>
