@@ -16,6 +16,11 @@ public class PostController {
         this.postService = postService;
     }
 
+    @GetMapping("/")
+    public String home() {
+        return "home";
+    }
+
     @GetMapping("/error")
     public String opps() {
         return "error";
