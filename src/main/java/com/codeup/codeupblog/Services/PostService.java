@@ -20,9 +20,16 @@ public class PostService {
         return posts;
     }
 
-    public void addPostToList(Post post) {
+    public Post save(Post post) {
         post.setId(posts.size() + 1);
         posts.add(post);
+        return post;
+    }
+
+    public Post update(long id, Post post) {
+        int index = (int) id - 1;
+        posts.set(index, post);
+        return post;
     }
 
     public Post viewOne(long id) {
@@ -35,9 +42,9 @@ public class PostService {
         Post ted = new Post("Test 2", "Lanyard schooner holystone ho bilge brig wherry pressgang belaying pin Admiral of the Black. Tack scourge of the seven seas hempen halter yo-ho-ho case shot chase blow the man down furl clipper booty. Rigging Admiral of the Black grog blossom barkadeer spirits nipperkin cutlass chantey knave deadlights.");
         Post jim = new Post("Test 3","Sriracha hella glossier, flexitarian you probably haven't heard of them whatever church-key vaporware XOXO shaman hoodie ennui umami skateboard. Venmo stumptown enamel pin, try-hard chicharrones tote bag meditation tumblr asymmetrical tofu. Helvetica YOLO mustache intelligentsia 8-bit prism gentrify. Narwhal hammock vice cardigan cloud bread hella. Portland snackwave marfa, succulents meh lumbersexual whatever gochujang.");
         Post jeff = new Post("Test 4","I was part of something special. Hey, you know how I'm, like, always trying to save the planet? Here's my chance. Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should. Yeah, but John, if The Pirates of the Caribbean breaks down, the pirates don’t eat the tourists.");
-        addPostToList(bill);
-        addPostToList(ted);
-        addPostToList(jim);
-        addPostToList(jeff);
+        save(bill);
+        save(ted);
+        save(jim);
+        save(jeff);
     }
 }

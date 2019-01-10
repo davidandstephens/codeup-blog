@@ -4,10 +4,7 @@ import com.codeup.codeupblog.Models.Post;
 import com.codeup.codeupblog.Services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,6 +33,7 @@ public class PostController {
         Post post = postService.viewOne(id);
         String title = post.getTitle();
         String body = post.getBody();
+        model.addAttribute("id", id);
         model.addAttribute("title", title);
         model.addAttribute("body", body);
         return "posts/show";
@@ -48,12 +46,32 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
-    public void newPostForm() {
+    public String showCreateForm(Model model) {
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    @ResponseBody
-    public void newPostSubmit() {
+    public String createPost(@ModelAttribute Post post) {
+        postService.save(post);
+        return "redirect:/posts";
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public String showEditForm(@PathVariable int id, Model model) {
+        Post post = postService.viewOne(id);
+        String title = post.getTitle();
+        String body = post.getBody();
+        model.addAttribute("id", id);
+        model.addAttribute("title", title);
+        model.addAttribute("body", body);
+        model.addAttribute("post", new Post());
+        return "posts/edit";
+    }
+
+    @PostMapping("/posts/{id}/edit")
+    public String updatePost(@PathVariable int id, @ModelAttribute Post post) {
+        postService.update(id, post);
+        return "redirect:/posts/{id}";
     }
 }
