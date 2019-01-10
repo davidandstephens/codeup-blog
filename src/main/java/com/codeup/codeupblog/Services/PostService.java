@@ -28,6 +28,7 @@ public class PostService {
 
     public Post update(long id, Post post) {
         int index = (int) id - 1;
+        post.setId(id);
         posts.set(index, post);
         return post;
     }
