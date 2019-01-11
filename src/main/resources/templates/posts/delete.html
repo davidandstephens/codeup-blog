@@ -9,11 +9,13 @@
             <img src="../static/img/big-bar.png" th:src="@{/img/big-bar.png}" alt="colorful bar" />
         </div>
         <div class="card-content">
-            <h3 class="card-title" th:text="${title}" />
-            <p th:text="${body}" />
-            <br />
-            <a class="waves-effect waves-purple btn-small indigo accent-3" th:href="@{/posts/{id}/edit(id=${id})}">Edit</a>
-            <a class="waves-effect waves-purple btn-small indigo accent-3" th:href="@{/posts/{id}/delete(id=${id})}">Delete</a>
+            <h3 class="card-title">
+                Are you sure you wish to delete this post?
+            </h3>
+            <form action="" th:action="@{/posts/{id}/delete(id=${id})}" method="post" th:object="${post}">
+                <button type="submit" value="submit" class="waves-effect waves-purple btn-small indigo accent-3">Yes</button>
+                <a class="waves-effect waves-purple btn-small indigo accent-3" th:href="@{/posts/{id}(id=${id})}">No</a>
+            </form>
         </div>
     </div>
 </div>

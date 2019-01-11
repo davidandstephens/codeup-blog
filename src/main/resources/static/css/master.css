@@ -20,3 +20,7 @@ a {
 .darker-offwhite-text {
     color: #BFC4BE;
 }
+
+button {
+    font-family: 'Dosis', sans-serif;
+}
