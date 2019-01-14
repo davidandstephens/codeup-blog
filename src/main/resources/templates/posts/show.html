@@ -10,10 +10,14 @@
         </div>
         <div class="card-content">
             <h3 class="card-title" th:text="${title}" />
-            <p th:text="${body}" />
+            <p th:text="${body}" class="i-like-paragraphs" />
             <br />
-            <a class="waves-effect waves-purple btn-small indigo accent-3" th:href="@{/posts/{id}/edit(id=${id})}">Edit</a>
-            <a class="waves-effect waves-purple btn-small indigo accent-3" th:href="@{/posts/{id}/delete(id=${id})}">Delete</a>
+            <p class="move-right">To contact this user, email them at <i><span th:text="${email}" /></i></p>
+            <br />
+            <div>
+                <a class="waves-effect waves-purple btn-small indigo accent-3" th:href="@{/posts/{id}/edit(id=${id})}">Edit</a>
+                <a class="waves-effect waves-purple btn-small indigo accent-3" th:href="@{/posts/{id}/delete(id=${id})}">Delete</a>
+            </div>
         </div>
     </div>
 </div>

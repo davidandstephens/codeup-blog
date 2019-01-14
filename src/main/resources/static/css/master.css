@@ -42,3 +42,28 @@ input {
     border-bottom: 1px solid #3d5afe !important;
     box-shadow: 0 1px 0 0 #3d5afe !important;
 }
+.preview-post {
+    height: 130px;
+    overflow: hidden;
+}
+
+.small-space {
+    height: 35px;
+}
+
+.head-card {
+    background: #3949ab;
+    color: #EEF4ED;
+}
+
+.move-right {
+    text-align: right;
+}
+
+.i-like-paragraphs {
+    white-space: pre-line;
+}
+
+textarea {
+    width: auto;
+}

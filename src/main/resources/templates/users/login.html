@@ -9,17 +9,17 @@
             <img src="../static/img/big-bar.png" th:src="@{/img/big-bar.png}" alt="colorful bar" />
         </div>
         <div class="card-content">
-            <form action="" th:action="@{/posts/{id}/edit(id=${id})}" method="post" th:object="${post}">
+            <form action="" th:action="@{/users/login}" method="post" th:object="${user}">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="title" name="title" type="text" class="validate" th:field="*{title}" />
-                        <label for="title">Title</label>
+                        <input id="username" name="username" type="text" class="validate" th:value="${username}" />
+                        <label for="username">Username</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="body" name="body" class="materialize-textarea" th:field="*{body}" />
-                        <label for="body">Body</label>
+                        <input id="password" name="password" type="password" class="validate" th:value="${password}" />
+                        <label for="password">Password</label>
                     </div>
                 </div>
                 <button type="submit" value="submit" class="waves-effect waves-purple btn-small indigo accent-3">Submit</button>
