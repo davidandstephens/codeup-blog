@@ -24,3 +24,21 @@ a {
 button {
     font-family: 'Dosis', sans-serif;
 }
+
+textarea {
+    font-family: 'Dosis', sans-serif;
+}
+
+input {
+    font-family: 'Dosis', sans-serif;
+}
+
+.input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+    color: #3d5afe !important;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #3d5afe !important;
+    box-shadow: 0 1px 0 0 #3d5afe !important;
+}
