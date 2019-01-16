@@ -9,20 +9,27 @@
             <img src="../static/img/big-bar.png" th:src="@{/img/big-bar.png}" alt="colorful bar" />
         </div>
         <div class="card-content">
-            <form action="" th:action="@{/users/login}" method="post" th:object="${user}">
+            <h3 class="card-title">Log In</h3>
+            <div th:if="${param.error}">
+                Invalid Username and Password.
+            </div>
+            <div th:if="${param.logout}">
+                You have been logged out.
+            </div>
+            <form action="" th:action="@{/login}" method="post">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="username" name="username" type="text" class="validate" th:value="${username}" />
+                        <input id="username" name="username" type="text" class="validate" />
                         <label for="username">Username</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" name="password" type="password" class="validate" th:value="${password}" />
+                        <input id="password" name="password" type="password" class="validate" />
                         <label for="password">Password</label>
                     </div>
                 </div>
-                <button type="submit" value="submit" class="waves-effect waves-purple btn-small indigo accent-3">Submit</button>
+                <button type="submit" value="Log In" class="waves-effect waves-purple btn-small indigo accent-3">Log In</button>
             </form>
         </div>
     </div>

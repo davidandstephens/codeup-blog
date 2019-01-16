@@ -9,14 +9,14 @@
             <img src="../static/img/big-bar.png" th:src="@{/img/big-bar.png}" alt="colorful bar" />
         </div>
         <div class="card-content">
-            <h3 class="card-title" th:text="${title}" />
-            <p th:text="${body}" class="i-like-paragraphs" />
+            <h3 class="card-title" th:text="${post.title}" />
+            <p th:text="${post.body}" class="i-like-paragraphs" />
             <br />
-            <p class="move-right">To contact this user, email them at <i><span th:text="${email}" /></i></p>
+            <p class="move-right">To contact this user, email them at <i><span th:text="${post.user.email}" class="red-text" /></i></p>
             <br />
-            <div>
-                <a class="waves-effect waves-purple btn-small indigo accent-3" th:href="@{/posts/{id}/edit(id=${id})}">Edit</a>
-                <a class="waves-effect waves-purple btn-small indigo accent-3" th:href="@{/posts/{id}/delete(id=${id})}">Delete</a>
+            <div th:if="${isOwner}">
+                <a class="waves-effect waves-purple btn-small indigo accent-3" th:href="@{/posts/{id}/edit(id=${post.id})}">Edit</a>
+                <a class="waves-effect waves-purple btn-small indigo accent-3" th:href="@{/posts/{id}/delete(id=${post.id})}">Delete</a>
             </div>
         </div>
     </div>

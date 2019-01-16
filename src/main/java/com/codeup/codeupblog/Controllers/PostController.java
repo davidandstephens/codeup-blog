@@ -5,9 +5,12 @@ import com.codeup.codeupblog.Models.User;
 import com.codeup.codeupblog.Repositories.PostRepository;
 import com.codeup.codeupblog.Repositories.UserRepository;
 import com.codeup.codeupblog.Services.PostService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @Controller
 public class PostController {
@@ -41,22 +44,30 @@ public class PostController {
     @GetMapping("/posts/{id}")
     public String viewPostWithID(@PathVariable int id, Model model) {
         Post post = postDao.findOne((long) id);
-        String email = post.getUser().getEmail();
-        model.addAttribute("id",id);
-        model.addAttribute("title", post.getTitle());
-        model.addAttribute("body", post.getBody());
-        model.addAttribute("email", email);
+        boolean isOwner;
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
+            long tim =  ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
+            isOwner = post.getUser().getId() == tim;
+    } else {
+            isOwner = false;
+        }
+        model.addAttribute("post", post);
+        model.addAttribute("isOwner", isOwner);
         return "posts/show";
     }
 
     @GetMapping("/posts/most-recent")
     public String viewMostRecentPost(Model model) {
         Post post = postDao.findFirstByOrderByIdDesc();
-        String email = post.getUser().getEmail();
-        model.addAttribute("id", post.getId());
-        model.addAttribute("title", post.getTitle());
-        model.addAttribute("body", post.getBody());
-        model.addAttribute("email", email);
+        boolean isOwner;
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
+            long tim =  ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
+            isOwner = post.getUser().getId() == tim;
+        } else {
+            isOwner = false;
+        }
+        model.addAttribute("post", post);
+        model.addAttribute("isOwner", isOwner);
         return "posts/show";
     }
 
@@ -68,7 +79,7 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post) {
-        post.setUser(userDao.findOne(1L));
+        post.setUser(userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId()));
         postDao.save(post);
         return "redirect:/posts";
     }
@@ -78,12 +89,22 @@ public class PostController {
         Post post = postDao.findOne((long) id);
         model.addAttribute("id", id);
         model.addAttribute("post", post);
-        return "posts/edit";
+        boolean isOwner;
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
+            long tim =  ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
+            isOwner = post.getUser().getId() == tim;
+        } else {
+            isOwner = false;
+        }
+        if (isOwner) {
+            return "posts/edit";
+        } else {
+            return "redirect:/posts/{id}";
+        }
     }
 
     @PostMapping("/posts/{id}/edit")
     public String updatePost(@PathVariable int id, @ModelAttribute Post post) {
-        post.setUser(userDao.findOne(1L));
         postDao.save(post);
         return "redirect:/posts/{id}";
     }
@@ -92,7 +113,18 @@ public class PostController {
     public String checkForDelete(@PathVariable int id, Model model) {
         Post post = postDao.findOne((long) id);
         model.addAttribute("post", post);
-        return "posts/delete";
+        boolean isOwner;
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
+            long tim =  ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
+            isOwner = post.getUser().getId() == tim;
+        } else {
+            isOwner = false;
+        }
+        if (isOwner) {
+            return "posts/delete";
+        } else {
+            return "redirect:/posts/{id}";
+        }
     }
 
     @PostMapping("/posts/{id}/delete")

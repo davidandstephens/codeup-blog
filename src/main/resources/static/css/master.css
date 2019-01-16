@@ -67,3 +67,7 @@ input {
 textarea {
     width: auto;
 }
+
+.red-text {
+    color: #9E0031;
+}

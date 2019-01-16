@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:fragment="head (title)">
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
@@ -12,11 +13,18 @@
     <nav th:fragment="navbar" class="indigo darken-1">
         <div class="nav-wrapper">
             <div class="container">
-                <a href="/" class="brand-logo offwhite-text">Cool and Good Blog</a>
+                <a href="/" class="brand-logo offwhite-text"><img src="../static/img/cool-logo.png" th:src="@{/img/cool-logo.png}" alt="Cool and Good Blog" /></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="/posts/create" class="offwhite-text">Create A Post</a></li>
-                    <li><a href="/posts/most-recent" class="offwhite-text">Most Recent Post</a></li>
                     <li><a href="/posts" class="offwhite-text">All Posts</a></li>
+                    <li><a href="/posts/most-recent" class="offwhite-text">Most Recent Post</a></li>
+                    <li sec:authorize="!isAuthenticated()"><a href="/login" class="offwhite-text">Log-In</a></li>
+                    <li sec:authorize="!isAuthenticated()"><a href="/register" class="offwhite-text">Register A New User</a></li>
+                    <li sec:authorize="isAuthenticated()"><a href="/posts/create" class="offwhite-text">Create A Post</a></li>
+                    <li sec:authorize="isAuthenticated()">
+                        <form th:action="@{/logout}" th:method="post" id="form1">
+                            <a onclick="document.getElementById('form1').submit();" class="offwhite-text">Log-Out</a>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
